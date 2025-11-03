@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Kira Purata Markah Subjek</title>
+    <title>Kira Purata GPI Markah Subjek</title>
     <style>
         body { 
             font-family: Arial, sans-serif; 
@@ -104,7 +104,7 @@
     </style>
 </head>
 <body>
-    <h1>Kira Purata GPI Berdasarkan Markah Subjek</h1>
+    <h1>Kira Purata Nilai Berdasarkan Markah Subjek</h1>
     <p>Sila masukkan markah (dalam peratus, 0-100) untuk setiap subjek:</p>
     
     <form id="markahForm">
@@ -161,7 +161,6 @@
             ];
             
             let totalNilaiNumerik = 0;
-            let ringkasan = "<h2>✅ Ringkasan Keputusan Anda:</h2><ul>";
             let semuaValid = true;
             
             subjek.forEach(sub => {
@@ -178,19 +177,34 @@
                     return;
                 }
                 totalNilaiNumerik += nilaiNumerik;
-                ringkasan += `<li>${sub.nama}: Markah ${markah.toFixed(2)}% (Nilai Numerik: ${nilaiNumerik})</li>`;
             });
             
             if (!semuaValid) return;
             
-            ringkasan += "</ul>";
             const purata = totalNilaiNumerik / 8;
-            ringkasan += `<p><strong>🔢 Jumlah Keseluruhan Nilai Numerik (Total):</strong> ${totalNilaiNumerik}</p>`;
-            ringkasan += `<p><strong>➗ Purata GPI:</strong> ${purata.toFixed(2)}</p>`;
+            // Hanya tunjukkan GPI dan pesan, tanpa ringkasan keputusan
+            let ringkasan = `<p><strong>➗ Purata GPI:</strong> ${purata.toFixed(2)}</p>`;
             ringkasan += "<p>semoga berjaya dihadapan✨</p>";
             
             document.getElementById("hasil").innerHTML = ringkasan;
         }
+
+        // Tambah event listener untuk Enter pada setiap input
+        const inputIds = ["bahasa_melayu", "bahasa_english", "matematik", "sains", "sejarah", "geografi", "reka_bentuk", "pendidikan_islam"];
+        inputIds.forEach((id, index) => {
+            document.getElementById(id).addEventListener('keydown', function(event) {
+                if (event.key === 'Enter') {
+                    event.preventDefault(); // Mencegah submit form
+                    const nextIndex = index + 1;
+                    if (nextIndex < inputIds.length) {
+                        document.getElementById(inputIds[nextIndex]).focus();
+                    } else {
+                        // Jika input terakhir, fokus ke butang atau panggil kiraPurata
+                        document.querySelector('button').focus();
+                    }
+                }
+            });
+        });
     </script>
 </body>
 </html>
