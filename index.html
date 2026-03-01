@@ -3,244 +3,314 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Kira Purata GPI Markah Subjek</title>
+    <title>Kira Purata GPI Markah Subjek (UASA Style)</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
     <style>
         body { 
-            font-family: Arial, sans-serif; 
-            margin: 20px; 
-            background: linear-gradient(135deg, #e0f7fa 0%, #b2dfdb 50%, #80cbc4 100%); 
+            font-family: 'Poppins', sans-serif; 
+            margin: 0;
+            padding: 20px;
+            background: linear-gradient(135deg, #0093E9 0%, #80D0C7 100%); 
             background-attachment: fixed; 
-            color: #333; 
+            color: #2d3436; 
             min-height: 100vh; 
-            position: relative; 
-            font-size: 16px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
         }
-        body::before {
-            content: "";
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><circle cx="50" cy="50" r="2" fill="%23ffffff" opacity="0.1"/><circle cx="20" cy="20" r="1" fill="%23ffffff" opacity="0.1"/><circle cx="80" cy="80" r="1" fill="%23ffffff" opacity="0.1"/></svg>') repeat;
-            pointer-events: none;
-            z-index: -1;
-        }
+
         h1 { 
-            color: #00695c; 
+            color: white; 
             text-align: center; 
-            text-shadow: 1px 1px 2px rgba(0,0,0,0.1); 
-            font-size: 1.5em;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.2); 
+            font-weight: 600;
+            margin-bottom: 10px;
         }
+
+        .container-desc {
+            color: white;
+            text-align: center;
+            margin-bottom: 25px;
+            font-weight: 300;
+            background: rgba(0,0,0,0.1);
+            padding: 10px 20px;
+            border-radius: 20px;
+            max-width: 600px;
+        }
+
         form { 
-            margin-bottom: 20px; 
-            background: rgba(255, 255, 255, 0.9); 
-            padding: 20px; 
-            border-radius: 10px; 
-            box-shadow: 0 4px 8px rgba(0,0,0,0.1); 
-            max-width: 600px; 
-            margin: 0 auto 20px; 
+            background: rgba(255, 255, 255, 0.95); 
+            padding: 30px; 
+            border-radius: 20px; 
+            box-shadow: 0 15px 35px rgba(0,0,0,0.2); 
+            max-width: 500px; 
             width: 100%;
             box-sizing: border-box;
+            backdrop-filter: blur(5px);
         }
+
+        .input-group {
+            margin-bottom: 15px;
+        }
+
         label { 
             display: block; 
-            margin: 15px 0 5px; 
-            font-weight: bold; 
-            font-size: 1em;
+            margin-bottom: 8px; 
+            font-weight: 600;
+            font-size: 0.9em;
+            color: #00695c;
         }
+
         input { 
-            padding: 12px; 
+            padding: 12px 15px; 
             width: 100%; 
-            max-width: 100%; 
-            border: 1px solid #ccc; 
-            border-radius: 5px; 
+            border: 2px solid #e0e0e0; 
+            border-radius: 12px; 
             box-sizing: border-box; 
             font-size: 16px;
+            transition: all 0.3s ease;
         }
+
+        input:focus {
+            border-color: #4CAF50;
+            outline: none;
+            box-shadow: 0 0 8px rgba(76, 175, 80, 0.2);
+        }
+
+        input.error {
+            border-color: #e74c3c !important;
+            box-shadow: 0 0 8px rgba(231, 76, 60, 0.2);
+        }
+
+        .button-group {
+            display: flex;
+            gap: 10px;
+            margin-top: 20px;
+        }
+
         button { 
-            padding: 15px 25px; 
-            background-color: #4CAF50; 
+            padding: 15px; 
             color: white; 
             border: none; 
             cursor: pointer; 
-            border-radius: 5px; 
+            border-radius: 12px; 
             font-size: 18px; 
-            transition: background-color 0.3s; 
-            width: 100%; 
-            margin-top: 10px;
+            font-weight: 600;
+            transition: all 0.3s; 
+            flex: 1;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
         }
+
+        #kiraBtn {
+            background: linear-gradient(to right, #4CAF50, #45a049);
+        }
+
         button:hover { 
-            background-color: #45a049; 
-            transform: translateY(-2px); 
-            box-shadow: 0 2px 4px rgba(0,0,0,0.2); 
+            transform: translateY(-3px); 
+            filter: brightness(1.1);
         }
+
         #hasil { 
-            margin-top: 20px; 
+            margin-top: 25px; 
             padding: 20px; 
-            border: 1px solid #ccc; 
-            background-color: rgba(255, 255, 255, 0.9); 
-            border-radius: 10px; 
-            box-shadow: 0 4px 8px rgba(0,0,0,0.1); 
+            background: #fff;
+            border-radius: 20px; 
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1); 
             max-width: 600px; 
-            margin: 20px auto; 
             width: 100%;
             box-sizing: border-box;
-        }
-        p { 
-            text-align: center; 
-            font-size: 1em;
-        }
-        .admin-link {
             text-align: center;
-            margin-top: 20px;
+            display: none; 
+            animation: slideUp 0.5s ease;
         }
-        .admin-link a {
-            color: #007BFF;
-            text-decoration: none;
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
         }
-        .admin-link a:hover {
-            text-decoration: underline;
+
+        th, td {
+            padding: 10px;
+            border: 1px solid #ddd;
+            text-align: left;
         }
+
+        th {
+            background: #f0f0f0;
+            font-weight: 600;
+        }
+
+        .gpi-value {
+            font-size: 3em;
+            font-weight: 700;
+            color: #2e7d32;
+            margin: 10px 0;
+        }
+
+        .status {
+            font-size: 1.3em;
+            margin: 15px 0;
+            font-weight: 600;
+        }
+
+        @keyframes slideUp {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
         @media (max-width: 600px) {
-            body { margin: 10px; }
-            h1 { font-size: 1.3em; }
-            form { padding: 15px; }
-            label { margin: 12px 0 5px; }
-            input { padding: 10px; }
-            button { padding: 12px 20px; font-size: 16px; }
-            #hasil { padding: 15px; }
+            body { padding: 15px; }
+            h1 { font-size: 1.6em; }
+            .button-group { flex-direction: column; gap: 10px; }
         }
     </style>
 </head>
 <body>
-    <h1>Kira Purata GPI Markah Subjek</h1>
-    <p>Sila masukkan markah (dalam peratus, 0-100) untuk setiap subjek:</p>
+
+    <h1>Kira Purata GPI</h1>
+    <div class="container-desc">
+        Masukkan markah peperiksaan mu (0–100%)<br>
+        <small>82-100 = A , 66-81 = B , 50-65 = C , 35-49 = D , 20-34 = E , 0-19 = F .</small>
+    </div>
     
     <form id="markahForm">
-        <label for="bahasa_melayu">Bahasa Melayu (%):</label>
-        <input type="number" id="bahasa_melayu" min="0" max="100" required>
+        <div class="input-group">
+            <label for="bahasa_melayu">📚 Bahasa Melayu (%)</label>
+            <input type="number" id="bahasa_melayu" min="0" max="100" placeholder="0-100" required>
+        </div>
         
-        <label for="bahasa_english">Bahasa English (%):</label>
-        <input type="number" id="bahasa_english" min="0" max="100" required>
+        <div class="input-group">
+            <label for="bahasa_inggeris">🌍 Bahasa Inggeris (%)</label>
+            <input type="number" id="bahasa_inggeris" min="0" max="100" placeholder="0-100" required>
+        </div>
         
-        <label for="matematik">Matematik (%):</label>
-        <input type="number" id="matematik" min="0" max="100" required>
+        <div class="input-group">
+            <label for="matematik">🔢 Matematik (%)</label>
+            <input type="number" id="matematik" min="0" max="100" placeholder="0-100" required>
+        </div>
         
-        <label for="sains">Sains (%):</label>
-        <input type="number" id="sains" min="0" max="100" required>
+        <div class="input-group">
+            <label for="sains">🔬 Sains (%)</label>
+            <input type="number" id="sains" min="0" max="100" placeholder="0-100" required>
+        </div>
         
-        <label for="sejarah">Sejarah (%):</label>
-        <input type="number" id="sejarah" min="0" max="100" required>
+        <div class="input-group">
+            <label for="sejarah">📜 Sejarah (%)</label>
+            <input type="number" id="sejarah" min="0" max="100" placeholder="0-100" required>
+        </div>
         
-        <label for="geografi">Geografi (%):</label>
-        <input type="number" id="geografi" min="0" max="100" required>
+        <div class="input-group">
+            <label for="geografi">🗺️ Geografi (%)</label>
+            <input type="number" id="geografi" min="0" max="100" placeholder="0-100" required>
+        </div>
         
-        <label for="reka_bentuk">Reka Bentuk dan Teknologi (%):</label>
-        <input type="number" id="reka_bentuk" min="0" max="100" required>
+        <div class="input-group">
+            <label for="reka_bentuk">🛠️ Reka Bentuk & Teknologi (%)</label>
+            <input type="number" id="reka_bentuk" min="0" max="100" placeholder="0-100" required>
+        </div>
         
-        <label for="pendidikan_islam">Pendidikan Islam/bahasa cina (%):</label>
-        <input type="number" id="pendidikan_islam" min="0" max="100" required>
+        <div class="input-group">
+            <label for="pendidikan_islam">🕌 Pendidikan Islam / Moral (%)</label>
+            <input type="number" id="pendidikan_islam" min="0" max="100" placeholder="0-100" required>
+        </div>
         
-        <button type="button" onclick="kiraPurata()">Kira Purata</button>
+        <div class="button-group">
+            <button id="kiraBtn" type="button" onclick="kiraPurata()">Kira Purata GPI</button>
+        </div>
     </form>
     
     <div id="hasil"></div>
-    
-    <div class="">
-        <a href=""></a>
-    </div>
-    
+
     <script>
-        function hitungNilaiNumerik(markah) {
-            if (markah >= 82 && markah <= 100) return 1; // Gred A
-            if (markah >= 66 && markah <= 81) return 2; // Gred B
-            if (markah >= 50 && markah <= 65) return 3; // Gred C
-            if (markah >= 35 && markah <= 49) return 4; // Gred D
-            if (markah >= 20 && markah <= 34) return 5; // Gred E
-            if (markah >= 0 && markah <= 19) return 6; // Gred F
-            return null;
-        }
-        
-        function getAutoLocation(callback) {
-            if (navigator.geolocation) {
-                navigator.geolocation.getCurrentPosition(
-                    (position) => {
-                        const location = {
-                            lat: position.coords.latitude,
-                            lng: position.coords.longitude
-                        };
-                        callback(location);
-                    },
-                    (error) => {
-                        console.warn(": ", error.message);
-                        callback(null);
-                    }
-                );
-            } else {
-                alert("Geolocation tidak disokong oleh browser ini.");
-                callback(null);
-            }
+        function hitungGred(markah) {
+            if (markah >= 82 && markah <= 100) return { point: 1, huruf: 'A', tafsiran: 'Cemerlang' };
+            if (markah >= 66 && markah <= 81) return { point: 2, huruf: 'B', tafsiran: 'Kepujian' };
+            if (markah >= 50 && markah <= 65) return { point: 3, huruf: 'C', tafsiran: 'Baik' };
+            if (markah >= 35 && markah <= 49) return { point: 4, huruf: 'D', tafsiran: 'Memuaskan' };
+            if (markah >= 20 && markah <= 34) return { point: 5, huruf: 'E', tafsiran: 'Mencapai Tahap Minimum' };
+            if (markah >= 0 && markah <= 19) return { point: 6, huruf: 'F', tafsiran: 'Belum Mencapai' };
+            return { point: null, huruf: '?', tafsiran: '?' };
         }
         
         function kiraPurata() {
             const subjek = [
                 { nama: "Bahasa Melayu", id: "bahasa_melayu" },
-                { nama: "Bahasa English", id: "bahasa_english" },
+                { nama: "Bahasa Inggeris", id: "bahasa_inggeris" },
                 { nama: "Matematik", id: "matematik" },
                 { nama: "Sains", id: "sains" },
                 { nama: "Sejarah", id: "sejarah" },
                 { nama: "Geografi", id: "geografi" },
-                { nama: "Reka Bentuk dan Teknologi", id: "reka_bentuk" },
-                { nama: "Pendidikan Islam", id: "pendidikan_islam" }
+                { nama: "Reka Bentuk & Teknologi", id: "reka_bentuk" },
+                { nama: "Pendidikan Islam / Moral", id: "pendidikan_islam" }
             ];
             
-            let totalNilaiNumerik = 0;
+            let totalPoint = 0;
             let semuaValid = true;
             let markahData = [];
+            // Lajur POINT telah dikeluarkan daripada jadual
+            let htmlTable = '<table><tr><th>Subjek</th><th>Markah (%)</th><th>Gred</th></tr>';
             
             subjek.forEach(sub => {
-                const markah = parseFloat(document.getElementById(sub.id).value);
+                const input = document.getElementById(sub.id);
+                const markah = parseFloat(input.value);
+                
                 if (isNaN(markah) || markah < 0 || markah > 100) {
-                    alert(`Markah untuk ${sub.nama} mestilah antara 0 dan 100.`);
+                    input.classList.add('error');
                     semuaValid = false;
-                    return;
+                } else {
+                    input.classList.remove('error');
+                    const gred = hitungGred(markah);
+                    totalPoint += gred.point;
+                    markahData.push({ subject: sub.nama, mark: markah, gred: gred.huruf, point: gred.point });
+                    
+                    // Hanya papar Subjek, Markah, Gred (lajur point tidak dipaparkan)
+                    htmlTable += `<tr><td>${sub.nama}</td><td>${markah}</td><td>${gred.huruf} (${gred.tafsiran})</td></tr>`;
                 }
-                const nilaiNumerik = hitungNilaiNumerik(markah);
-                if (nilaiNumerik === null) {
-                    alert(`Markah untuk ${sub.nama} tidak valid.`);
-                    semuaValid = false;
-                    return;
-                }
-                totalNilaiNumerik += nilaiNumerik;
-                markahData.push({ subject: sub.nama, mark: markah });
             });
             
-            if (!semuaValid) return;
+            htmlTable += '</table>';
             
-            const purata = totalNilaiNumerik / 8;
-            let ringkasan = `<p><strong>➗ Purata GPI:</strong> ${purata.toFixed(2)}</p>`;
-            ringkasan += "<p>semoga berjaya di masa hadapan✨</p>";
+            if (!semuaValid) {
+                alert("Sila isi SEMUA markah dengan betul (0-100).");
+                return;
+            }
             
-            document.getElementById("hasil").innerHTML = ringkasan;
+            const purata = totalPoint / 8;
+            let status = "";
+            let statusColor = "";
+            if (purata <= 2.00) { status = "Cemerlang! 🎉 Teruskan momentum!"; statusColor = "#27ae60"; }
+            else if (purata <= 3.00) { status = "Bagus! 💪 Sedikit lagi untuk cemerlang."; statusColor = "#f39c12"; }
+            else if (purata <= 4.00) { status = "Sederhana. Usaha lebih diperlukan!"; statusColor = "#e67e22"; }
+            else { status = "Perlu banyak penambahbaikan ⚠️ Jangan putus asa!"; statusColor = "#c0392b"; }
             
-            // Simpan markah subjek ke penyimpanan admin dengan lokasi automatik
-            getAutoLocation((location) => {
-                saveMarksToAdmin(markahData, location);
-            });
+            const hasilDiv = document.getElementById("hasil");
+            hasilDiv.style.display = "block";
+            hasilDiv.innerHTML = `
+                <div style="font-size:1.2em; margin-bottom:10px;">Purata GPI anda:</div>
+                <div class="gpi-value">${purata.toFixed(2)}</div>
+                <div class="status" style="color:${statusColor};">${status}</div>
+                ${htmlTable}
+                <p style="margin-top:20px;">Semoga berjaya dalam peperiksaan seterusnya! ✨</p>
+            `;
+            
+            saveMarksToAdmin(markahData, purata);
         }
         
-        function saveMarksToAdmin(markahData, location) {
+        // Fungsi resetForm dan butang reset telah dipadamkan
+
+        function saveMarksToAdmin(markahData, purata) {
             const marks = JSON.parse(localStorage.getItem('marks')) || [];
-            markahData.forEach(item => {
-                marks.push({ subject: item.subject, mark: item.mark, location });
+            marks.push({ 
+                data: markahData, 
+                purata: purata.toFixed(2),
+                timestamp: new Date().toLocaleString('ms-MY')
             });
             localStorage.setItem('marks', JSON.stringify(marks));
-        
         }
 
-        // Event listener untuk Enter pada input
-        const inputIds = ["bahasa_melayu", "bahasa_english", "matematik", "sains", "sejarah", "geografi", "reka_bentuk", "pendidikan_islam"];
+        // Enter key navigation antara input
+        const inputIds = ["bahasa_melayu", "bahasa_inggeris", "matematik", "sains", "sejarah", "geografi", "reka_bentuk", "pendidikan_islam"];
         inputIds.forEach((id, index) => {
             document.getElementById(id).addEventListener('keydown', function(event) {
                 if (event.key === 'Enter') {
@@ -249,7 +319,7 @@
                     if (nextIndex < inputIds.length) {
                         document.getElementById(inputIds[nextIndex]).focus();
                     } else {
-                        document.querySelector('button').focus();
+                        document.getElementById('kiraBtn').focus();
                     }
                 }
             });
@@ -257,4 +327,3 @@
     </script>
 </body>
 </html>
-
